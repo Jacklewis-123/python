@@ -13,34 +13,47 @@ def main():
             print("Invalid input\n") 
 
 
-# Write a Python function that takes a string containing numbers separated by commas and returns a list of integers.
+# Convert a string containing numbers separated by commas into a list of integers.
 def number_list():
+    numbers = input("Can you give me a set of numbers each separated by a comma: ")
+    try:
+        split_list = list(map(int, numbers.split(',')))
+        return f"The modified list, with the strings converted to integers: {split_list}"
+    except ValueError:
+        return "Please enter only numbers separated by commas."
 
-    numbers = input("Can you give me a set of numbers each seperated by a comma: ")
-    split_list = numbers.split(',')
-    split_list = list(map(int, split_list))
-    return f"The modified list, with the strings converted to integers: {split_list}"
-    
 
-
-# Write a Python function that calculates the average of a list of numbers without using built-in functions like sum() or len().
+# Calculate the average of a list of numbers without using built-in functions like sum() or len().
 def average():
-    
-    length = int(input("How many numbers would you like to add: "))
-    total = 0
-    
-    for i in range(length):
-        num = int(input("Please add number: "))
-        total += num
-    
-    avg = total / length
-    avg = float(avg)
-    return f"The average of the list of numbers provided: {avg}"
- 
-    
-# Write a Python function that takes a dictionary with string keys and integer values and returns the key with the highest value.
+    try:
+        length = int(input("How many numbers would you like to add: "))
+        total = 0
+        for i in range(length):
+            num = int(input("Please add number: "))
+            total += num
+        avg = total / length
+        return f"The average of the list of numbers provided: {avg}"
+    except ValueError:
+        return "Please enter valid integers."
+    except ZeroDivisionError:
+        return "The list cannot have zero numbers."
+
+
+# Return the key with the highest value from a dictionary.
 def highest_value():
-    
+    try:
+        current_dict = {}
+        n = int(input("How many items do you want to hold in the dictionary: "))
+        for i in range(n):
+            key = input(f"Add a key to the dictionary: ")
+            value = int(input(f"Add the value to be associated with key '{key}': "))
+            current_dict[key] = value
+
+        highest_key = max(current_dict, key=current_dict.get)  # Get key with the highest value
+        return f"The key with the highest value is: {highest_key} with value {current_dict[highest_key]}"
+    except ValueError:
+        return "Please ensure that values are integers."
+
 
 if __name__ == "__main__":
     main()
