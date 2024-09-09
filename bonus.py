@@ -15,14 +15,32 @@ def main():
 
 # Write a Python function that takes a string containing numbers separated by commas and returns a list of integers.
 def number_list():
-    pass
+
+    numbers = input("Can you give me a set of numbers each seperated by a comma: ")
+    split_list = numbers.split(',')
+    split_list = list(map(int, split_list))
+    return f"The modified list, with the strings converted to integers: {split_list}"
+    
 
 
 # Write a Python function that calculates the average of a list of numbers without using built-in functions like sum() or len().
 def average():
-    pass
-
-
+    
+    length = int(input("How many numbers would you like to add: "))
+    total = 0
+    
+    for i in range(length):
+        num = int(input("Please add number: "))
+        total += num
+    
+    avg = total / length
+    avg = float(avg)
+    return f"The average of the list of numbers provided: {avg}"
+ 
+    
 # Write a Python function that takes a dictionary with string keys and integer values and returns the key with the highest value.
 def highest_value():
-    pass
+    
+
+if __name__ == "__main__":
+    main()
